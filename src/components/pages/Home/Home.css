@@ -1,0 +1,11 @@
+#picturesContainer {
+  justify-content: center;
+}
+.picture {
+  width: 220px !important;
+}
+.iconHeart {
+  position: relative;
+  top: 45px;
+  left: 170px;
+}

@@ -1,25 +1,18 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import IconHeart from "../../IconHeart";
 import "./Home.css";
 
 const Home = () => {
-  const { pictures, setFavoritesPictures, favoritesPictures } =
-    useContext(Context);
+  const { pictures, setPictures } = useContext(Context);
   const changeFavorite = (id) => {
-    pictures.filter((picture) => {
-      if (picture.id === id) {
-        if (picture.liked) {
-          setFavoritesPictures(
-            favoritesPictures.filter((picture) => picture.id !== id)
-          );
-        } else {
-          setFavoritesPictures([...favoritesPictures, picture]);
-        }
-        picture.liked = !picture.liked;
-      }
+    pictures.map((picture) => {
+      if (picture.id === id)
+        setPictures([...pictures], (picture.liked = !picture.liked));
     });
   };
+
   return (
     <div>
       <h1 className="text-green-500 text-center text-4xl pt-6">Natural Pic</h1>

@@ -4,7 +4,6 @@ const IconHeart = ({ filled }) => {
       width="40px"
       viewBox="0 0 24 24"
       className="iconHeart"
-      
     >
       <path
         fill={filled ? "red" : "white"}

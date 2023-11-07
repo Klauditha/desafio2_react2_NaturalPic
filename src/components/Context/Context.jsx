@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from "react";
 import { photos } from "../../../public/photos.json";
+import axios from "axios";
 export const Context = createContext();
 
 export const ProviderContext = ({ children }) => {
@@ -8,7 +9,9 @@ export const ProviderContext = ({ children }) => {
   const [favoritesPictures, setFavoritesPictures] = useState([]);
 
   const getData = async () => {
-    setPictures(photos);
+    axios.get("/photos.json").then((res) => {
+      setPictures(res.data);
+    });
   };
 
   useEffect(() => {
@@ -17,7 +20,7 @@ export const ProviderContext = ({ children }) => {
 
   return (
     <Context.Provider
-      value={{pictures, favoritesPictures, setFavoritesPictures}}
+      value={{ pictures, favoritesPictures, setFavoritesPictures }}
     >
       {children}
     </Context.Provider>
